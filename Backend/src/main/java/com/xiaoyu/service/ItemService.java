@@ -1,6 +1,7 @@
 package com.xiaoyu.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xiaoyu.entity.DayItems;
 import com.xiaoyu.entity.Item;
 import com.xiaoyu.entity.User;
 
@@ -14,6 +15,11 @@ import java.util.List;
  */
 public interface ItemService extends IService<Item> {
     public List<Item> getAllItemsByUser(User user);
+
+    public List<DayItems> getDayItemsByUser(User user);
+
+    public void saveAItem(Item item);
+
 
 }
 

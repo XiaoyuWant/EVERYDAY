@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+</head>
+<body>
+
+
+<p class="BigTitle">What Do You Do Today?</p>
+
+<form method="post" th:action="@{/item/add}" th:object="${item}" class="form">
+    <div class="loginInputDiv">
+        <p class="modernText">新增一条记录： </p>
+        <input type="text" th:field="${item.content}" placeholder="null" class="modernText">
+        <input type="submit"  value="提交" class="modernButton">
+    </div>
+</form>
+
+
+<ul th:each="dayItem : ${dayItems}">
+    <p th:text="${dayItem.date}" class="date"></p>
+
+    <ul th:each="item : ${dayItem.items}">
+        <li th:text="${item.content}" class="modernText"></li>
+    </ul>
+</ul>
+
+</body>
+
+</html>
+<style >
+    .BigTitle{
+        color: blue;
+        font-size: xx-large;
+        font-family: Consolas, Monaco;
+    }
+
+    .date{
+         color: green;
+         font-size: large;
+         font-family: Consolas, Monaco;
+     }
+
+    .modernText{
+        font-family: Consolas,"Microsoft JhengHei UI，PingFang";
+    }
+    .modernButton{
+        border: none;
+        outline: none;
+        padding: 3px;
+        color: azure;
+        background: black;
+        border-radius: 3px;
+    }
+</style>

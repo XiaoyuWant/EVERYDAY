@@ -2,25 +2,22 @@ package com.xiaoyu.entity;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * (TItem)表实体类
- *
- * @author makejava
- * @since 2022-10-06 16:58:27
- */
 @SuppressWarnings("serial")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("t_item")
 public class Item {
-    @TableId("item_id")
+
+    //自增
+    @TableId(value = "item_id", type = IdType.AUTO)
     private Integer itemId;
     
     private String content;
@@ -30,14 +27,6 @@ public class Item {
     private String user;
     
     private Integer likes;
-
-
-
-    /**
-     * 获取主键值
-     *
-     * @return 主键值
-     */
 
 }
 
