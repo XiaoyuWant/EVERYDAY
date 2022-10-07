@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <title>HomePage</title>
 </head>
-<body>
+<body style="background: #2c3e50">
 
 
-<p class="BigTitle" th:text="${user.userName}+'@EVERYDAY'"></p>
+<p class="BigTitle" th:text="${user.userName}+'@EVERYDAY🎉'"></p>
 
 <form method="post" th:action="@{/item/add}" th:object="${item}" >
 
@@ -38,31 +38,34 @@
 </html>
 <style >
     .BigTitle{
-        color: blue;
+        color: #36c3fe;
         font-size: xx-large;
-        font-family: Consolas, Monaco;
+        font-family: Futura;
     }
 
     .date{
-         color: green;
-         font-size: large;
-         font-family: Consolas, Monaco;
+        color: #1abc9c;
+        font-size: large;
+        font-family: Consolas, Monaco;
      }
 
     .modernText{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
         padding: 3px;
+        color: white;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .modernTextArea{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 3px;
+        padding: 6px;
+        border-radius: 6px;
         width: 350px;
         font-size: 12pt;
         overflow: visible;
-        background: black;
-        color: azure;
-
+        background: #34495e;
+        color: white;
     }
 
     .divBox{
@@ -73,9 +76,10 @@
     .modernButton{
         border: none;
         outline: none;
-        padding: 3px;
+        padding: 10px;
         font-size: 12pt;
-        color: azure;
-        background: black;
+        margin-right: 20px;
+        color: white;
+        background: #7f8c8d;
     }
 </style>

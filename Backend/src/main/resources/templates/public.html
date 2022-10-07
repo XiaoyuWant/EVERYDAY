@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <title>HomePage</title>
 </head>
-<body>
+<body style="background: #2c3e50">
 
 
-<p class="BigTitle" >PUBLIC@EVERYDAY</p>
+<p class="BigTitle" >PUBLIC@EVERYDAY🎉</p>
 
 <form method="post" th:action="@{/public/add}" th:object="${item}" >
     <div class="divBox">
@@ -37,13 +37,13 @@
 </html>
 <style >
     .BigTitle{
-        color: blue;
+        color: #36c3fe;
         font-size: xx-large;
-        font-family: Consolas, Monaco;
+        font-family: Futura;
     }
 
     .date{
-         color: green;
+         color: #1abc9c;
          font-size: large;
          font-family: Consolas, Monaco;
      }
@@ -51,22 +51,23 @@
     .modernText{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
         padding: 8px;
+        color: white;
     }
     .userText{
-        font-family: Consolas, Monaco;
-        color: blue;
-
+        font-family: Futura;
+        color: #16a085;
+        padding: 5px;
     }
 
     .modernTextArea{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 3px;
+        padding: 6px;
+        border-radius: 6px;
         width: 350px;
         font-size: 12pt;
         overflow: visible;
-        background: black;
+        background: #34495e;
         color: white;
-
     }
 
     .divBox{
@@ -75,19 +76,19 @@
     }
 
     .blogBox{
-        background: lightblue;
-        border-radius: 4px;
+        background: #34495e;
+        border-radius: 8px;
         padding: 4px;
         margin-top: 10px;
-
     }
 
     .modernButton{
         border: none;
         outline: none;
-        padding: 3px;
+        padding: 10px;
         font-size: 12pt;
-        color: azure;
-        background: black;
+        margin-right: 20px;
+        color: white;
+        background: #7f8c8d;
     }
 </style>
