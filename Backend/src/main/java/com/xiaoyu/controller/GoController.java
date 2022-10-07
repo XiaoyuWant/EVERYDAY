@@ -9,6 +9,6 @@ public class GoController {
 
     @RequestMapping("/")
     public String welcome(){
-        return "redirect:/login/";
+        return "redirect:/login/login";
     }
 }

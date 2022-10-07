@@ -28,9 +28,9 @@
 <div th:each="dayItem : ${dayItems}">
     <p th:text="${dayItem.date}" class="date"></p>
 
-    <ul th:each="item : ${dayItem.items}">
+    <div th:each="item : ${dayItem.items}">
         <li th:text="${item.content}" class="modernText"></li>
-    </ul>
+    </div>
 </div>
 
 </body>

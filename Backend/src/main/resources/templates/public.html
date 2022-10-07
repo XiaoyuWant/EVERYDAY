@@ -25,9 +25,11 @@
 <div th:each="dayItem : ${dayItems}">
     <p th:text="${dayItem.date}" class="date"></p>
 
-    <ul th:each="item : ${dayItem.items}">
-        <li th:text="'@' + ${item.user} + ': ' + ${item.content}" class="modernText"></li>
-    </ul>
+    <div th:each="item : ${dayItem.items}" class="blogBox">
+        <div th:text="'@' + ${item.user}" class="userText"></div>
+        <div th:text="${item.content}" class="modernText"></div>
+    </div>
+
 </div>
 
 </body>
@@ -48,7 +50,12 @@
 
     .modernText{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 3px;
+        padding: 8px;
+    }
+    .userText{
+        font-family: Consolas, Monaco;
+        color: blue;
+
     }
 
     .modernTextArea{
@@ -58,13 +65,21 @@
         font-size: 12pt;
         overflow: visible;
         background: black;
-        color: azure;
+        color: white;
 
     }
 
     .divBox{
         padding: 20px;
         text-align: center;
+    }
+
+    .blogBox{
+        background: lightblue;
+        border-radius: 4px;
+        padding: 4px;
+        margin-top: 10px;
+
     }
 
     .modernButton{

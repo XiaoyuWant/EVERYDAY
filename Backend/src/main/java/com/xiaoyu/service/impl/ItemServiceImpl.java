@@ -10,10 +10,7 @@ import com.xiaoyu.service.ItemService;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemService {
@@ -69,7 +66,9 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
         for(Map.Entry<String,List<Item>> entry : map.entrySet()) {
             DayItems dayItems = new DayItems();
             dayItems.setDate(entry.getKey());
-            dayItems.setItems(entry.getValue());
+            List<Item> itemList = entry.getValue();
+            Collections.sort(itemList, (a,b)->(b.getTime().compareTo(a.getTime())));
+            dayItems.setItems(itemList);
             dayItemsList.add(dayItems);
         }
         return dayItemsList;
