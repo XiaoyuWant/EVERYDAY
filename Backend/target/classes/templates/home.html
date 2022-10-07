@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta name="viewport" content="width=device-width" initial-scale="1">
     <meta charset="UTF-8">
     <title>HomePage</title>
 </head>
 <body>
 
 
-<p class="BigTitle">What Do You Do Today?</p>
+<p class="BigTitle" th:text="${user.userName}+'@EVERYDAY'"></p>
 
 <form method="post" th:action="@{/item/add}" th:object="${item}" class="form">
-    <div class="loginInputDiv">
-        <p class="modernText">新增一条记录： </p>
-        <input type="text" th:field="${item.content}" placeholder="null" class="modernText">
+
+    <textarea th:field="${item.content}" placeholder="null" rows="5" class="modernTextArea"></textarea>
+
+    <div>
         <input type="submit"  value="提交" class="modernButton">
     </div>
+
 </form>
 
 
@@ -43,14 +46,27 @@
      }
 
     .modernText{
-        font-family: Consolas,"Microsoft JhengHei UI，PingFang";
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        padding: 3px;
     }
+
+    .modernTextArea{
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        padding: 3px;
+        width: 350px;
+        font-size: 12pt;
+        overflow: visible;
+        background: black;
+        color: azure;
+
+    }
+
     .modernButton{
         border: none;
         outline: none;
         padding: 3px;
+        font-size: 12pt;
         color: azure;
         background: black;
-        border-radius: 3px;
     }
 </style>

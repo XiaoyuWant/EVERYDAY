@@ -23,7 +23,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     @Override
     public List<Item> getAllItemsByUser(User user) {
         LambdaQueryWrapper<Item> queryWrapper = new LambdaQueryWrapper<Item>();
-        queryWrapper.like(Item::getUser, user.getName());
+        queryWrapper.eq(Item::getUser, user.getUserName());
         List<Item> items = itemDao.selectList(queryWrapper);
         return items;
 
@@ -32,7 +32,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     @Override
     public List<DayItems> getDayItemsByUser(User user) {
         LambdaQueryWrapper<Item> queryWrapper = new LambdaQueryWrapper<Item>();
-        queryWrapper.like(Item::getUser, user.getName());
+        queryWrapper.eq(Item::getUser, user.getUserName());
         List<Item> items = itemDao.selectList(queryWrapper);
         Map<String,List<Item>> map = new HashMap<>();
         SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");

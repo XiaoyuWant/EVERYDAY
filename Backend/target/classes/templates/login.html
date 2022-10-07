@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1">
+    <title>LOGIN</title>
+</head>
+<body>
+<form method="post" th:action="@{/login/tryLogin}" th:object="${user}" class="form">
+
+    <div  class="divBox">
+        <input th:field="${user.userName}" placeholder="username" class="inputText"></input>
+    </div>
+    <div class="divBox">
+        <input th:field="${user.userPassword}" placeholder="password" class="inputText"></input>
+    </div>
+    <div class="divBox">
+        <button type="submit"  name="action" value="login" class="modernButton">登录</button>
+    </div>
+    <div class="divBox">
+        <button type="submit"  name="action" value="register" class="modernButton">注册</button>
+    </div>
+
+</form>
+
+</body>
+</html>
+
+
+<style >
+    .BigTitle{
+        color: blue;
+        font-size: xx-large;
+        font-family: Consolas, Monaco;
+    }
+
+    .date{
+        color: green;
+        font-size: large;
+        font-family: Consolas, Monaco;
+    }
+
+    .modernText{
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        padding: 3px;
+    }
+    .inputText{
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        padding: 5px;
+        width: 200px;
+        height: 30px;
+        text-align: center;
+    }
+    .divBox{
+        padding: 20px;
+        text-align: center;
+    }
+
+    .modernTextArea{
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        padding: 3px;
+        width: 350px;
+        font-size: 12pt;
+        overflow: visible;
+        background: black;
+        color: azure;
+    }
+
+    .modernButton{
+        border: none;
+        outline: none;
+        padding: 3px;
+        font-size: 12pt;
+        color: azure;
+        background: black;
+    }
+</style>
