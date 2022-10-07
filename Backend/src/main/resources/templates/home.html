@@ -28,8 +28,8 @@
 <div th:each="dayItem : ${dayItems}">
     <p th:text="${dayItem.date}" class="date"></p>
 
-    <div th:each="item : ${dayItem.items}">
-        <li th:text="${item.content}" class="modernText"></li>
+    <div th:each="item : ${dayItem.items}" class="blogBox">
+        <div th:text="${item.content}" class="modernText"></div>
     </div>
 </div>
 
@@ -73,6 +73,12 @@
         text-align: center;
     }
 
+    .blogBox{
+        background: #34495e;
+        border-radius: 8px;
+        padding: 4px;
+        margin-top: 10px;
+    }
     .modernButton{
         border: none;
         outline: none;
