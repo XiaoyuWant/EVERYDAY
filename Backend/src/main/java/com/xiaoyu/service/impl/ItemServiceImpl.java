@@ -21,6 +21,14 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
     ItemDao itemDao;
 
     @Override
+    public List<DayItems> getPublicDayItems() {
+        LambdaQueryWrapper<Item> queryWrapper = new LambdaQueryWrapper<Item>();
+        queryWrapper.eq(Item::getIsPublic, 1);
+        List<Item> items = itemDao.selectList(queryWrapper);
+        return packItemsToDayItems(items);
+    }
+
+    @Override
     public List<Item> getAllItemsByUser(User user) {
         LambdaQueryWrapper<Item> queryWrapper = new LambdaQueryWrapper<Item>();
         queryWrapper.eq(Item::getUser, user.getUserName());
@@ -34,6 +42,16 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
         LambdaQueryWrapper<Item> queryWrapper = new LambdaQueryWrapper<Item>();
         queryWrapper.eq(Item::getUser, user.getUserName());
         List<Item> items = itemDao.selectList(queryWrapper);
+        return packItemsToDayItems(items);
+    }
+
+    @Override
+    public void saveAItem(Item item) {
+        itemDao.insert(item);
+    }
+
+
+    public List<DayItems> packItemsToDayItems(List<Item> items){
         Map<String,List<Item>> map = new HashMap<>();
         SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd ");
         for(Item item: items) {
@@ -55,11 +73,6 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
             dayItemsList.add(dayItems);
         }
         return dayItemsList;
-    }
-
-    @Override
-    public void saveAItem(Item item) {
-        itemDao.insert(item);
     }
 }
 

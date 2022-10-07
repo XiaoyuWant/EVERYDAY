@@ -28,5 +28,7 @@ public class Item {
     
     private Integer likes;
 
+    private Integer isPublic;
+
 }
 

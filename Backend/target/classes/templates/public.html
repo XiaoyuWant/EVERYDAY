@@ -8,19 +8,16 @@
 <body>
 
 
-<p class="BigTitle" th:text="${user.userName}+'@EVERYDAY'"></p>
+<p class="BigTitle" >PUBLIC@EVERYDAY</p>
 
-<form method="post" th:action="@{/item/add}" th:object="${item}" >
-
+<form method="post" th:action="@{/public/add}" th:object="${item}" >
     <div class="divBox">
         <textarea th:field="${item.content}"  rows="5" class="modernTextArea"></textarea>
-
     </div>
     <div class="divBox">
         <input type="submit"  value="发布" class="modernButton">
-        <a  href="/public/byDateHtml" class="modernText">看广场</a>
+        <a  href="/item/byDateHtml" class="modernText">回到主页</a>
     </div>
-
 
 </form>
 
@@ -29,7 +26,7 @@
     <p th:text="${dayItem.date}" class="date"></p>
 
     <ul th:each="item : ${dayItem.items}">
-        <li th:text="${item.content}" class="modernText"></li>
+        <li th:text="'@' + ${item.user} + ': ' + ${item.content}" class="modernText"></li>
     </ul>
 </div>
 

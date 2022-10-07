@@ -14,6 +14,8 @@ import java.util.List;
  * @since 2022-10-06 16:58:29
  */
 public interface ItemService extends IService<Item> {
+
+    public List<DayItems> getPublicDayItems();
     public List<Item> getAllItemsByUser(User user);
 
     public List<DayItems> getDayItemsByUser(User user);

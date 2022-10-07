@@ -19,6 +19,8 @@ public class LoginController {
     @Resource
     UserService userService;
 
+
+
     @GetMapping("/login")
     public String getLoginPage(Model model) {
         User user = new User();
