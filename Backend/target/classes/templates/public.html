@@ -8,7 +8,7 @@
 <body style="background: #2c3e50">
 
 
-<p class="BigTitle" >PUBLIC@EVERYDAY🎉</p>
+<p class="BigTitle" >PUBLIC@EVERYDAY 🎉</p>
 
 <form method="post" th:action="@{/public/add}" th:object="${item}" >
     <div class="divBox">
@@ -22,12 +22,14 @@
 </form>
 
 
-<div th:each="dayItem : ${dayItems}">
+<div th:each="dayItem : ${dayItems}" >
+
     <p th:text="${dayItem.date}" class="date"></p>
 
     <div th:each="item : ${dayItem.items}" class="blogBox">
         <div th:text="'@' + ${item.user}" class="userText"></div>
         <div th:text="${item.content}" class="modernText"></div>
+        <a th:href="'/comment/'+${item.itemId}">详细</a>
     </div>
 
 </div>
@@ -50,7 +52,7 @@
 
     .modernText{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 8px;
+        padding: 4px;
         color: white;
     }
     .userText{
@@ -61,25 +63,25 @@
 
     .modernTextArea{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 6px;
-        border-radius: 6px;
-        width: 350px;
+        border-radius: 10px;
         font-size: 12pt;
         overflow: visible;
         background: #34495e;
         color: white;
+        width: 90%;
     }
 
     .divBox{
-        padding: 20px;
         text-align: center;
     }
 
     .blogBox{
         background: #34495e;
-        border-radius: 8px;
-        padding: 4px;
+        padding: 5px;
+        border-radius: 10px;
         margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
 
     .modernButton{
@@ -89,6 +91,8 @@
         font-size: 12pt;
         margin-right: 20px;
         color: white;
-        background: #7f8c8d;
+        background: #36c3fe;
+        border-radius: 10px;
+        width: 25%;
     }
 </style>

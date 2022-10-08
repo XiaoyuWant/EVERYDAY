@@ -3,39 +3,41 @@
 <head>
     <meta name="viewport" content="width=device-width" initial-scale="1">
     <meta charset="UTF-8">
-    <title>HomePage</title>
+    <title>Comments</title>
 </head>
 <body style="background: #2c3e50">
+<p class="BigTitle">详细</p>
+<div class="blogBox">
+    <div th:text="'@' + ${session.item.user}" class="userText"></div>
+    <div th:text="${session.item.content}" class="modernText"></div>
+</div>
 
 
-<p class="BigTitle" th:text="${user.userName}+'@EVERYDAY 🎉'"></p>
-
-<form method="post" th:action="@{/item/add}" th:object="${item}" >
+<form method="post" th:action="@{/comment/add}" th:object="${newComment}" >
     <div class="divBox">
-        <textarea th:field="${item.content}"  rows="5" class="modernTextArea"></textarea>
+        <textarea th:field="${newComment.content}"  rows="5" class="modernTextArea"></textarea>
     </div>
 
 
     <div class="divBox">
-        <input type="submit"  value="发布" class="modernButton">
-        <a  href="/public/byDateHtml" class="modernText">看广场</a>
+        <input type="submit"  value="评论" class="modernButton">
     </div>
-
-
 </form>
 
 
-<div th:each="dayItem : ${dayItems}">
-    <p th:text="${dayItem.date}" class="date"></p>
-
-    <div th:each="item : ${dayItem.items}" class="blogBox">
-        <div th:text="${item.content}" class="modernText"></div>
-    </div>
+<p class="BigTitle">评论</p>
+<div th:each="comment : ${comments}" class="commentBox">
+    <div th:text="'@' + ${comment.userName}" class="userText"></div>
+    <div th:text="${comment.content}" class="modernText"></div>
 </div>
+
+
 
 </body>
 
 </html>
+
+
 <style >
     .BigTitle{
         color: #36c3fe;
@@ -47,29 +49,31 @@
         color: #1abc9c;
         font-size: large;
         font-family: Consolas, Monaco;
-     }
+    }
 
     .modernText{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 3px;
+        padding: 8px;
         color: white;
-        margin-left: 10px;
-        margin-right: 10px;
+    }
+    .userText{
+        font-family: Futura;
+        color: #16a085;
+        padding: 5px;
     }
 
     .modernTextArea{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 6px;
         border-radius: 10px;
+        width: 90%;
         font-size: 12pt;
         overflow: visible;
         background: #34495e;
         color: white;
-        width: 90%;
     }
 
     .divBox{
-        padding: 20px;
+        padding: 10px;
         text-align: center;
     }
 
@@ -81,6 +85,15 @@
         margin-left: 10px;
         margin-right: 10px;
     }
+
+    .commentBox{
+        background: indigo;
+        border-radius: 10px;
+        margin-top: 10px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
     .modernButton{
         border: none;
         outline: none;
@@ -93,3 +106,7 @@
         width: 25%;
     }
 </style>
+
+<script type="text/javascript">
+
+</script>
