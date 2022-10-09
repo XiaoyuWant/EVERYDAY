@@ -5,17 +5,20 @@
     <meta charset="UTF-8">
     <title>Comments</title>
 </head>
-<body style="background: #2c3e50">
+<body style="background: #3d3d3d">
 <p class="BigTitle">详细</p>
+
 <div class="blogBox">
-    <div th:text="'@' + ${session.item.user}" class="userText"></div>
-    <div th:text="${session.item.content}" class="modernText"></div>
+    <div th:text="'@' + ${item.user}" class="userText"></div>
+    <div th:text="${item.content}" class="modernText"></div>
 </div>
 
 
-<form method="post" th:action="@{/comment/add}" th:object="${newComment}" >
+
+
+<form method="post" th:action="@{/comment/__${item.itemId}__/add}" th:object="${newComment}" >
     <div class="divBox">
-        <textarea th:field="${newComment.content}"  rows="5" class="modernTextArea"></textarea>
+        <textarea th:field="${newComment.content}"  rows="3" class="modernTextArea"></textarea>
     </div>
 
 
@@ -25,7 +28,7 @@
 </form>
 
 
-<p class="BigTitle">评论</p>
+<p class="BigTitle" th:text="'评论('+${comments.size()}+')'">评论</p>
 <div th:each="comment : ${comments}" class="commentBox">
     <div th:text="'@' + ${comment.userName}" class="userText"></div>
     <div th:text="${comment.content}" class="modernText"></div>
@@ -56,6 +59,7 @@
         padding: 8px;
         color: white;
     }
+
     .userText{
         font-family: Futura;
         color: #16a085;
@@ -67,43 +71,35 @@
         border-radius: 10px;
         width: 90%;
         font-size: 12pt;
-        overflow: visible;
         background: #34495e;
         color: white;
     }
 
     .divBox{
-        padding: 10px;
         text-align: center;
+        margin-top: 10px;
     }
 
     .blogBox{
         background: #34495e;
         border-radius: 10px;
-        padding: 4px;
         margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
     }
 
     .commentBox{
-        background: indigo;
+        background: #2c3e50;
         border-radius: 10px;
         margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
     }
 
     .modernButton{
         border: none;
         outline: none;
-        padding: 10px;
-        font-size: 12pt;
-        margin-right: 20px;
+        padding: 5px;
         color: white;
-        background: #36c3fe;
+        background: slategrey;
         border-radius: 10px;
-        width: 25%;
+        width: 20%;
     }
 </style>
 

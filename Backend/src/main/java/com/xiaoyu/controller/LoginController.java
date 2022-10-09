@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletResponse;
+
+import static com.xiaoyu.util.CookieUtil.addCookieForHttpResponse;
 
 @Controller
 @RequestMapping("/login")
 public class LoginController {
     @Resource
     UserService userService;
-
-
 
     @GetMapping("/login")
     public String getLoginPage(Model model) {
@@ -29,11 +29,11 @@ public class LoginController {
     }
 
     @PostMapping(value = "/tryLogin",params = "action=login")
-    public String tryLogin(@ModelAttribute User user, HttpSession session) {
+    public String tryLogin(@ModelAttribute User user, HttpServletResponse response) {
         String name = user.getUserName();
         User userOfDatabase = userService.getUserByName(name);
-        if(userOfDatabase!=null && user.getUserPassword().equals(userOfDatabase.getUserPassword())){
-            session.setAttribute("user",userOfDatabase);
+        if(userOfDatabase!=null && user.getUserPassword().equals(userOfDatabase.getUserPassword())) {
+            addCookieForHttpResponse(response, userOfDatabase.getUserName());
             return "redirect:/item/byDateHtml";
         } else {
             return "login";
@@ -41,15 +41,17 @@ public class LoginController {
     }
 
     @PostMapping(value = "/tryLogin",params = "action=register")
-    public String tryRegister(@ModelAttribute User user, HttpSession session) {
+    public String tryRegister(@ModelAttribute User user, HttpServletResponse response) {
         User userOfDatabase = userService.registerByNameAndPassword(user);
         if(userOfDatabase!=null){
-            session.setAttribute("user",userOfDatabase);
+            addCookieForHttpResponse(response, userOfDatabase.getUserName());
             return "redirect:/item/byDateHtml";
         } else {
             return "redirect:/login/login";
         }
     }
+
+
 
 
 }

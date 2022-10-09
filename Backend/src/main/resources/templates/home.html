@@ -5,20 +5,23 @@
     <meta charset="UTF-8">
     <title>HomePage</title>
 </head>
-<body style="background: #2c3e50">
+<body style="background: #3d3d3d">
 
 
 <p class="BigTitle" th:text="${user.userName}+'@EVERYDAY 🎉'"></p>
 
 <form method="post" th:action="@{/item/add}" th:object="${item}" >
     <div class="divBox">
-        <textarea th:field="${item.content}"  rows="5" class="modernTextArea"></textarea>
+        <textarea th:field="${item.content}"  rows="3" class="modernTextArea"></textarea>
     </div>
 
 
     <div class="divBox">
         <input type="submit"  value="发布" class="modernButton">
-        <a  href="/public/byDateHtml" class="modernText">看广场</a>
+        <button class="normalButton">
+            <a  href="/public/byDateHtml" class="hrefText">看广场</a>
+        </button>
+
     </div>
 
 
@@ -49,12 +52,25 @@
         font-family: Consolas, Monaco;
      }
 
+    .normalButton{
+        border: none;
+        outline: none;
+        background: slategrey;
+        padding: 5px;
+        border-radius: 10px;
+        width: 20%;
+        margin-left: 5px;
+    }
+
+    .hrefText{
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        color: white;
+        text-decoration: none;
+    }
     .modernText{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
-        padding: 3px;
+        padding: 4px;
         color: white;
-        margin-left: 10px;
-        margin-right: 10px;
     }
 
     .modernTextArea{
@@ -69,8 +85,8 @@
     }
 
     .divBox{
-        padding: 20px;
         text-align: center;
+        margin-top: 10px;
     }
 
     .blogBox{
@@ -78,18 +94,14 @@
         border-radius: 10px;
         padding: 4px;
         margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
     }
     .modernButton{
         border: none;
         outline: none;
-        padding: 10px;
-        font-size: 12pt;
-        margin-right: 20px;
+        padding: 5px;
         color: white;
-        background: #36c3fe;
+        background: slategrey;
         border-radius: 10px;
-        width: 25%;
+        width: 20%;
     }
 </style>

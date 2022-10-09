@@ -30,5 +30,7 @@ public class Item {
 
     private Integer isPublic;
 
+    private Integer commentCount;
+
 }
 

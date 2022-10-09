@@ -5,18 +5,21 @@
     <meta charset="UTF-8">
     <title>HomePage</title>
 </head>
-<body style="background: #2c3e50">
+<body style="background: #3d3d3d">
 
 
 <p class="BigTitle" >PUBLIC@EVERYDAY 🎉</p>
 
 <form method="post" th:action="@{/public/add}" th:object="${item}" >
     <div class="divBox">
-        <textarea th:field="${item.content}"  rows="5" class="modernTextArea"></textarea>
+        <textarea th:field="${item.content}"  rows="3" class="modernTextArea"></textarea>
     </div>
     <div class="divBox">
         <input type="submit"  value="发布" class="modernButton">
-        <a  href="/item/byDateHtml" class="modernText">回到主页</a>
+        <button class="normalButton">
+            <a  href="/item/byDateHtml"  class="hrefText">回到主页</a>
+        </button>
+
     </div>
 
 </form>
@@ -29,7 +32,14 @@
     <div th:each="item : ${dayItem.items}" class="blogBox">
         <div th:text="'@' + ${item.user}" class="userText"></div>
         <div th:text="${item.content}" class="modernText"></div>
-        <a th:href="'/comment/'+${item.itemId}">详细</a>
+        <div>
+            <label th:text="'💡 '+${item.commentCount}" class="modernText"></label>
+
+            <button class="normalButton">
+                <a th:href="'/comment/'+${item.itemId}"  class="hrefText">查看评论</a>
+            </button>
+        </div>
+
     </div>
 
 </div>
@@ -39,9 +49,9 @@
 </html>
 <style >
     .BigTitle{
-        color: #36c3fe;
+        color: white;
         font-size: xx-large;
-        font-family: Futura;
+        font-family: "Times New Roman";
     }
 
     .date{
@@ -55,11 +65,29 @@
         padding: 4px;
         color: white;
     }
+
     .userText{
         font-family: Futura;
         color: #16a085;
         padding: 5px;
     }
+
+    .normalButton{
+        border: none;
+        outline: none;
+        background: slategrey;
+        padding: 5px;
+        border-radius: 10px;
+        width: 20%;
+        margin-left: 5px;
+    }
+
+    .hrefText{
+        font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
+        color: white;
+        text-decoration: none;
+    }
+
 
     .modernTextArea{
         font-family: Consolas,"Microsoft JhengHei UI", "PingFang";
@@ -73,6 +101,7 @@
 
     .divBox{
         text-align: center;
+        margin-top: 10px;
     }
 
     .blogBox{
@@ -80,19 +109,15 @@
         padding: 5px;
         border-radius: 10px;
         margin-top: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
     }
 
     .modernButton{
         border: none;
         outline: none;
-        padding: 10px;
-        font-size: 12pt;
-        margin-right: 20px;
+        padding: 5px;
         color: white;
-        background: #36c3fe;
+        background: slategrey;
         border-radius: 10px;
-        width: 25%;
+        width: 20%;
     }
 </style>
