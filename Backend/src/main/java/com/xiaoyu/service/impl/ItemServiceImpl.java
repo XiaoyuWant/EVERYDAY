@@ -71,6 +71,7 @@ public class ItemServiceImpl extends ServiceImpl<ItemDao, Item> implements ItemS
             dayItems.setItems(itemList);
             dayItemsList.add(dayItems);
         }
+        Collections.sort(dayItemsList, (a,b)->(b.getDate().compareTo(a.getDate())));
         return dayItemsList;
     }
 }
