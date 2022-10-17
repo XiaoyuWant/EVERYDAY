@@ -58,6 +58,21 @@ public class ItemController {
         return "home";
     }
 
+    /**
+     * ip/item/widget/{username}
+     * @param userName
+     * @return DayItems 最近的一天的列表
+     */
+    @GetMapping("/widget/{username}")
+    @ResponseBody
+    public DayItems getDayItemsWidget(@PathVariable("username") String userName) {
+        User user = userService.getUserByName(userName);
+        if(user==null) return null;
+        List<DayItems> dayItemsList = itemService.getDayItemsByUser(user);
+        DayItems recentDayItems = dayItemsList.get(0);
+        return recentDayItems;
+    }
+
     @PostMapping("/add")
     public String AddRecord(@ModelAttribute Item item, HttpServletRequest request) {
         String userName = CookieUtil.getFieldFromCookies(request.getCookies(), "user");
